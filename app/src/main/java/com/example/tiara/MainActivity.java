@@ -60,6 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //untuk di toast
                     Toast.makeText(this, result.getContents(),
                             Toast.LENGTH_LONG).show();
+                    
+                    
+                    //1.browser
+                    String url = new String(result.getContents());
+                    String address;
+                    String http = "http://";
+                    String https = "https://";
+                    address = new String(result.getContents());
+                    if (address.contains(http) || address.contains(https)){
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
                 }
             }
         } else {
